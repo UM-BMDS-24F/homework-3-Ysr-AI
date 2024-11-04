@@ -9,6 +9,9 @@ def create_blast_db(fasta_path, db_name="mouse_db"):
 
 def run_blast(human_sequences, db_name="mouse_db", output_file="results.txt"):
     with open(output_file, "w") as out_file:
+        out_file.write("Query ID\t Subject ID\t % Identity\t Alignment Length\t Mismatches\t"
+                "Gap Openings\t Query Start\t Query End\t Subject Start\t"
+                "Subject End\t E-value\t Bitscore\n")
         for human_id, sequence in human_sequences.items():
             print(f"Running BLAST for {human_id}...")
             blastp_cmd = [
